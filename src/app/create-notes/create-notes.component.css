@@ -1,4 +1,4 @@
-.formSection{
+.formSection {
     background-color:rgba(248, 245, 245, 0.9);
     border-radius: 20px;
     width: 100%;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -15,11 +15,11 @@
     justify-content: center;
 }
 
-label{
+label {
     color: rgb(184, 181, 181);
    }
 
-.textarea{
+.textarea {
     min-width: 100%;
     min-height: 50px;
     border-radius: 10px;
@@ -30,7 +30,7 @@ label{
     resize: none;       
 }
 
-input{
+input {
     margin: 10px 0;
     border-radius: 15px;
     border: 1px solid rgb(184, 179, 179);
@@ -40,12 +40,12 @@ input{
     width: 55%;
 }
 
-h5{
+h5 {
     margin: 1rem 2rem;
     color: rgb(99, 98, 98);
 }
 
-button{
+button {
     margin-top: 20px;
     width: 20% ;
     min-width: 65px;
@@ -56,5 +56,48 @@ button{
     outline: none;
     padding: 3px;
     font-size: small;
+}
+
+.warningSectionFortitle {
+
+    background-color: red;
+    color: white;
+    position: absolute;
+    z-index: 999;
+    top: 4.2rem;
+    left: 2.1rem;
+    width: 46%;
+    text-align: center;
+    padding: 6px;
+    border-radius: 16px
+
+}
+
+.warningSectionForTextarea {
+    background-color: red;
+    color: white;
+    position: absolute;
+    z-index: 999;
+    top: 9.5rem;
+    left: 2.1rem;
+    width: 46%;
+    text-align: center;
+    padding: 6px;
+    border-radius: 16px
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .warningSectionFortitle {
+        width: 42%;
     }
+
+    .warningSectionForTextarea {
+        width: 43%;
+    }
+}
+
+
+
+    
     

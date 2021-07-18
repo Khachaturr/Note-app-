@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NoteService } from '../note.service';
 
 @Component({
   selector: 'app-create-notes',
@@ -10,7 +11,11 @@ export class CreateNotesComponent implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private formBilder: FormBuilder,) {
+  isValid: boolean;
+
+  _errorMessage: string;
+
+  constructor(private formBilder: FormBuilder, private noteService: NoteService) {
     this.formGroup = this.formBilder.group({
       title: ['', [Validators.required, Validators.maxLength(255)]],
       description: ['', Validators.required]
@@ -20,6 +25,29 @@ export class CreateNotesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveData() {}
+  saveData() {
+    if (this.formGroup.valid) {
+      this.noteService.saveNote(this.formGroup.value)
+      this.formGroup.reset()
+    } else {
+      this.isValid=true
+    }
+  }
+
+  get errorMessage() {
+    if (this.formGroup.get('title').errors) {
+      for (let param in this.formGroup.get('title').errors) {
+
+        return NoteService.getValidatorErrorMessage(param)
+      }
+
+    }
+    else if (this.formGroup.get('description').errors) {
+      for (let param in this.formGroup.get('description').errors) {
+
+        return NoteService.getValidatorErrorMessage(param)
+      }
+    }
+  }
 
 }

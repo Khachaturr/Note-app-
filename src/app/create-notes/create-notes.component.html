@@ -1,10 +1,20 @@
 <div class="formSection">
     <h5>Create note</h5>
 
+    <div *ngIf="(isValid && formGroup.get('title').errors) || (formGroup.get('title').errors && formGroup.get('title').touched) ||
+        this.formGroup.get('title')?.errors?.maxlength " class="warningSectionFortitle">
+                <p>{{errorMessage}}</p>
+            </div>
+
     <form [formGroup]="formGroup" class="form" (submit)="saveData()">
         <label for="title">Note title</label>
         <input type="text" name="title" formControlName="title">
-        <label for="description">Note</label>       
+        <label for="description">Note</label>     
+        
+        <div *ngIf="(isValid && formGroup.get('description').errors) || formGroup.get('description').errors && formGroup.get('description').touched "
+                    class="warningSectionForTextarea">
+                    <p>{{errorMessage}}</p>
+                </div>
 
         <textarea name="description" class="textarea" formControlName="description"></textarea>
         <button type="submit">Create</button>
