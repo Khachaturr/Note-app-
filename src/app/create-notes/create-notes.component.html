@@ -1,0 +1,12 @@
+<div class="formSection">
+    <h5>Create note</h5>
+
+    <form [formGroup]="formGroup" class="form" (submit)="saveData()">
+        <label for="title">Note title</label>
+        <input type="text" name="title" formControlName="title">
+        <label for="description">Note</label>       
+
+        <textarea name="description" class="textarea" formControlName="description"></textarea>
+        <button type="submit">Create</button>
+    </form>
+</div>

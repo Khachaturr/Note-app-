@@ -1,0 +1,60 @@
+.formSection{
+    background-color:rgba(248, 245, 245, 0.9);
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px 0px;
+    margin: 15px 0px;
+    position: relative;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 2rem;
+    justify-content: center;
+}
+
+label{
+    color: rgb(184, 181, 181);
+   }
+
+.textarea{
+    min-width: 100%;
+    min-height: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
+    outline: none;
+    padding: 5px;
+    border: 1px solid rgb(184, 179, 179);
+    resize: none;       
+}
+
+input{
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 1px solid rgb(184, 179, 179);
+    outline: none;
+    min-height: 20px;
+    padding: 5px;
+    width: 55%;
+}
+
+h5{
+    margin: 1rem 2rem;
+    color: rgb(99, 98, 98);
+}
+
+button{
+    margin-top: 20px;
+    width: 20% ;
+    min-width: 65px;
+    color: white;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 15px;
+    outline: none;
+    padding: 3px;
+    font-size: small;
+    }
+    
