@@ -1,0 +1,60 @@
+.sowSection {
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(248, 245, 245, 0.9);
+    border-radius: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    position: relative;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 2rem;
+    justify-content: center;
+}
+
+.inputDiv {
+    margin: 10px 0;
+    min-height: 20px;
+    min-width: 40%;
+    padding: 5px;
+}
+
+.remuvTextarea {
+    max-width: 600px;
+    min-width: 200px;
+    min-height: 50px;
+    /* border-radius: 10px; */
+    margin-top: 10px;
+    /* outline: none; */
+    padding: 5px;
+    /* border: 1px solid rgb(184, 179, 179); */
+    /* resize: none;        */
+    position: relative;
+}
+
+.text {
+    width: 100% !important;
+    overflow-wrap: anywhere !important;
+}
+
+.fas {
+    position: absolute;
+    top: 1rem;
+    right: 2.7rem;
+}
+
+.fa {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.ishidden {
+    display: block;
+}

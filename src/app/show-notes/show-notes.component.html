@@ -1,1 +1,36 @@
+<div>
+    <div *ngFor="let item of dataNote;let i=index">
+        <div class="sowSection" [formGroup]="formGroupforShowNote">
+            <i class='fas fa-pencil-alt' (click)="openEditsection(i, item)"></i>
+            <i class="fa fa-trash" (click)="deleteNote(item)"></i>
 
+
+            <div class="form">
+                <div class="inputDiv" *ngIf="(i===isshow); else title ">
+                    <input type='text' name="titleShowNotes" formControlName="titleShowNotes" #error>
+
+                </div>
+                <ng-template #title>
+                    <div class="inputDiv">
+                        <p class="text">{{item.title}}</p>
+                    </div>
+                </ng-template>
+
+
+                <div class="remuvTextarea" *ngIf="(i===isshow); else note">
+                    <textarea name="descriptionShowNotes" class="textarea"
+                        formControlName="descriptionShowNotes"></textarea>
+                </div>
+                <ng-template #note>
+                    <div class="remuvTextarea">
+                        <p class="text">{{item.description}}</p>
+                    </div>
+                </ng-template>
+
+
+                <button *ngIf="i===isshow ? true:false" class="ishidden" (click)='remuveNotes(item)'>Save</button>
+            </div>
+
+        </div>
+
+    </div>
