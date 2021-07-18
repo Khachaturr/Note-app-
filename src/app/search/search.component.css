@@ -1,0 +1,39 @@
+.form input{
+    padding: 7px;
+    outline: none;
+    border-radius: 15px;
+    border: 1px solid rgb(184, 179, 179);
+}
+
+div {
+  margin: 6rem 4.5rem 2rem !important;
+  position: relative;
+}
+
+::placeholder {
+    color:  rgb(184, 179, 179);;
+    opacity: 1; /* Firefox */
+  }
+
+.icon {
+   transform: rotateY(180deg);
+   position: absolute;
+   top: 10px;
+   left: 165px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .form {
+    display: flex;
+    justify-content: center;
+  }
+    
+  div {
+    margin: 1rem 0  !important;
+    position: relative;
+  }
+  
+}
+
+

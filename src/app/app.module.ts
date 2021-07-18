@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CreateNotesComponent } from './create-notes/create-notes.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateNotesComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
