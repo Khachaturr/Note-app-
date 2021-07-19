@@ -17,14 +17,15 @@ export class CreateNotesComponent implements OnInit, OnDestroy {
 
   _errorMessage: string;
 
-  notifier = new Subject()
+  notifier = new Subject();
 
   constructor(private formBilder: FormBuilder, private noteService: NoteService) {
     this.formGroup = this.formBilder.group({
       title: ['', [Validators.required, Validators.maxLength(255)]],
       description: ['', Validators.required]
-    })
-    this.formGroup.valueChanges.pipe(takeUntil(this.notifier)).subscribe(() => this.isValid = false)
+    });
+
+    this.formGroup.valueChanges.pipe(takeUntil(this.notifier)).subscribe(() => this.isValid = false);
    }
 
   ngOnInit(): void {

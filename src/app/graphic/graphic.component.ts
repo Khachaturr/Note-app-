@@ -14,7 +14,7 @@ export class GraphicComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(ChartComponent) chart: ChartComponent;
 
-  notifier = new Subject()
+  notifier = new Subject();
 
 
   type = 'line';
@@ -35,9 +35,10 @@ export class GraphicComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private noteService: NoteService, private graphicServis: GraphicService) {
 
-    this.noteService.send.pipe(takeUntil(this.notifier)).subscribe(data => this.graphicServis.tims(data))
+    this.noteService.send.pipe(takeUntil(this.notifier)).subscribe(data => this.graphicServis.tims(data));
 
-    this.graphicServis.sendGraphicData.pipe(takeUntil(this.notifier)).subscribe(data => this.addDataInGraphic(data))
+    this.graphicServis.sendGraphicData.pipe(takeUntil(this.notifier))
+    .subscribe(data => this.addDataInGraphic(data));
   }
 
 

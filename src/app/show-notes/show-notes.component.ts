@@ -23,10 +23,10 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
     this.formGroup = this.formBilder.group({
       title: ['', [Validators.required, Validators.maxLength(255)]],
       description: ['', Validators.required]
-    })
+    });
 
-    this.noteService.send.subscribe(data => this.dataNote= [...data])
-    this.noteService.getNotes()
+    this.noteService.send.subscribe(data => this.dataNote= [...data]);
+    this.noteService.getNotes();
     
    }
 
@@ -49,7 +49,7 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
         return NoteService.getValidatorErrorMessage(param)
       }
     }
-  }
+  };
 
   openEditsection(i, item:Note) {
     if(item != undefined){
@@ -60,7 +60,7 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
     }else{
       this.isshow = i
     }
-  }
+  };
 
   deleteNote(item: Note){
     this.noteService.deleteNote(item)
@@ -72,7 +72,7 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
       this.noteService.remuveNote(this.formGroup.value, item.id)
       this.isshow= NaN
     }
-  }
+  };
 
 
 }

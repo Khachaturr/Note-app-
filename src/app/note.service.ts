@@ -5,8 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 export interface Note {
   title: string;
   description: string;
-  date: Date
-  id: number
+  date: Date;
+  id: number;
 }
 
 @Injectable({
@@ -70,7 +70,7 @@ export class NoteService {
     .catch(error => {
       alert("Failed to save note")
     })
-  }
+  };
 
 
   changeDataServer(data: Note)  {
@@ -89,13 +89,11 @@ export class NoteService {
     .catch(error => {
       alert("Failed to delete note")
     })
-
-   
-  }
+  };
 
   deleteNoteInServer(id){
     return this.http.delete<Note>(`http://localhost:9000/api/notes/:${id}`)
-  }
+  };
 
   getNotes(){
 
@@ -107,10 +105,30 @@ export class NoteService {
     .catch(error => {
       alert("Failed to get notes")
     })
-  }
+  };
 
   getNotesFromServer(){
     return this.http.get<any>(`http://localhost:9000/api/notes`)
-  }
+  };
+
+
+  filtrNote(data) {
+    if(data){
+      let filterNotes = this.filter(data)
+     this.sendsData(filterNotes)
+    }else{
+      this.sendsData(this.notesdata)
+    }
+  };
+
+  filter(note) {
+    console.log(777,note)    
+      return this.notesdata.filter((el) => {
+        if(el.title.toLowerCase().indexOf(note.toLowerCase()) > -1 ||
+         el.description.toLowerCase().indexOf(note.toLowerCase())> -1){
+          return el
+        };
+      })
+  };
 
 }

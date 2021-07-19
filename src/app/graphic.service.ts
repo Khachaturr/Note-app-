@@ -4,8 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 import { Note } from './note.service';
 
 interface graphicData {
-  times: string[]
-  count: number[]
+  times: string[];
+  count: number[];
 }
 
 @Injectable({
@@ -22,9 +22,9 @@ export class GraphicService {
   graphicData: graphicData = {
     times: [],
     count: []
-  }
+  };
 
-  sendGraphicData = new BehaviorSubject<graphicData>(this.graphicData)
+  sendGraphicData = new BehaviorSubject<graphicData>(this.graphicData);
 
   constructor(private datePipe: DatePipe) { }
 
@@ -41,7 +41,7 @@ export class GraphicService {
       this.graphicData.times = [];
       this.sendGraphicData.next(this.graphicData)
     }
-  }
+  };
 
   timereduse(data) {
     this.graphicMilisecondsTime = []
@@ -49,7 +49,7 @@ export class GraphicService {
       let time = data - (10000 * i);
       this.graphicMilisecondsTime.push(time)
     }
-  }
+  };
 
   noteCountofTime(data: Note[]) {
     this.graphicNotesCount = []
@@ -57,18 +57,18 @@ export class GraphicService {
       let num = data.filter((data) => Number(data.date) <= this.graphicMilisecondsTime[i])
       this.graphicNotesCount.push(num.length)
     }
-  }
+  };
 
   formatDate(data: Array<number>) {
     const fullTime: Array<string> = data.map((time) => this.datePipe.transform(time, "HH:mm:ss"))
     this.graphicTimes = [...fullTime]
-  }
+  };
 
 
   addgraphicData(){
     this.graphicData.times = [...this.graphicTimes.reverse()]
     this.graphicData.count = [...this.graphicNotesCount.reverse()]
     this.sendGraphicData.next(this.graphicData)
-  }
+  };
 
 }
