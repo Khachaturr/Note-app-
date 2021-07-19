@@ -138,4 +138,8 @@ button {
         top: -1.8rem;
     }
 
+    .ishidden {
+        margin: 20px;
+    }
+
 }

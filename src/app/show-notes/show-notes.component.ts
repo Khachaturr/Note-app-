@@ -34,7 +34,7 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
   }
 
   ngOnDestroy(): void {
-     this.noteService.send.unsubscribe
+     this.noteService.send.unsubscribe()
   }
 
   get errorMessage() {
