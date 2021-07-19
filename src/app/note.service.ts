@@ -74,7 +74,7 @@ export class NoteService {
 
 
   changeDataServer(data: Note)  {
-    return this.http.put<Note>(`http://localhost:9000/api/notes/:${data.id}`, { ...data })
+    return this.http.put<Note>(`http://localhost:9000/api/notes/${data.id}`, { ...data })
   };
 
 
@@ -92,7 +92,7 @@ export class NoteService {
   };
 
   deleteNoteInServer(id){
-    return this.http.delete<Note>(`http://localhost:9000/api/notes/:${id}`)
+    return this.http.delete<Note>(`http://localhost:9000/api/notes/${id}`)
   };
 
   getNotes(){
