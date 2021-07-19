@@ -25,17 +25,14 @@
     padding: 5px;
 }
 
-.remuvTextarea {
-    max-width: 600px;
-    min-width: 200px;
+.textarea {
+    min-width: 97%;
     min-height: 50px;
-    /* border-radius: 10px; */
-    margin-top: 10px;
-    /* outline: none; */
+    border-radius: 10px;
+    outline: none;
     padding: 5px;
-    /* border: 1px solid rgb(184, 179, 179); */
-    /* resize: none;        */
-    position: relative;
+    border: 1px solid rgb(184, 179, 179);
+    resize: none;       
 }
 
 .text {
@@ -57,4 +54,88 @@
 
 .ishidden {
     display: block;
+}
+
+
+.warning {
+    background-color: red;
+    color: white;
+    position: absolute;
+    z-index: 999;
+    top: 0.5rem;
+    left: 2.9rem;
+    width: 41%;
+    text-align: center;
+    padding: 6px;
+    border-radius: 16px;
+}
+
+
+.warwarningDescription{
+    background-color: red;
+    color: white;
+    position: absolute;
+    z-index: 999;
+    top: -1.9rem;
+    left: 0.rem;
+    width: 54%;
+    text-align: center;
+    padding: 6px;
+    border-radius: 16px
+}
+
+
+input {
+    border-radius: 15px;
+    border: 1px solid rgb(184, 179, 179);
+    outline: none;
+    min-height: 20px;
+    padding: 5px;
+    width: 55%;
+}
+
+button {
+    margin-top: 20px;
+    width: 35% ;
+    color: white;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 15px;
+    outline: none;
+    padding: 3px;
+    font-size: small;
+}
+
+.remuvTextarea {
+    display: flex;
+    min-height: 50px;
+    margin-top: 10px;
+    padding: 5px;
+    position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .form {
+        margin: 0;
+        width: 100%;
+    } 
+
+    .remuvTextarea {
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .inputDiv {
+        padding-left: 20px;
+    }
+
+    .warning {
+        top: -1.5rem;
+    }
+
+    .warwarningDescription{
+        top: -1.8rem;
+    }
+
 }

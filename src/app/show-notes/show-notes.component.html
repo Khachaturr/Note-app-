@@ -1,13 +1,19 @@
 <div>
     <div *ngFor="let item of dataNote;let i=index">
-        <div class="sowSection" [formGroup]="formGroupforShowNote">
+        <div class="sowSection" [formGroup]="formGroup">
             <i class='fas fa-pencil-alt' (click)="openEditsection(i, item)"></i>
             <i class="fa fa-trash" (click)="deleteNote(item)"></i>
 
-
             <div class="form">
                 <div class="inputDiv" *ngIf="(i===isshow); else title ">
-                    <input type='text' name="titleShowNotes" formControlName="titleShowNotes" #error>
+
+                    <div *ngIf="((formGroup.get('title')?.errors && formGroup.get('title').touched)) && (i===isshow) ||
+                         this.formGroup.get('title')?.errors?.maxlength && (i===isshow)"
+                        class="warning">
+                        <p>{{errorMessage}}</p>
+                    </div>
+
+                    <input type='text' name="title" formControlName="title" #error>
 
                 </div>
                 <ng-template #title>
@@ -16,10 +22,15 @@
                     </div>
                 </ng-template>
 
-
                 <div class="remuvTextarea" *ngIf="(i===isshow); else note">
-                    <textarea name="descriptionShowNotes" class="textarea"
-                        formControlName="descriptionShowNotes"></textarea>
+
+                    <div *ngIf="((formGroup.get('description')?.errors && formGroup.get('description').touched)) && (i===isshow)"
+                        class="warwarningDescription">
+                        <p>{{errorMessage}}</p>
+                    </div>
+
+                    <textarea name="description" class="textarea"
+                        formControlName="description"></textarea>
                 </div>
                 <ng-template #note>
                     <div class="remuvTextarea">

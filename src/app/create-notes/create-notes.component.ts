@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NoteService } from '../note.service';
 
@@ -7,7 +7,7 @@ import { NoteService } from '../note.service';
   templateUrl: './create-notes.component.html',
   styleUrls: ['./create-notes.component.css']
 })
-export class CreateNotesComponent implements OnInit {
+export class CreateNotesComponent implements OnInit, OnDestroy {
 
   formGroup: FormGroup;
 
@@ -20,10 +20,13 @@ export class CreateNotesComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(255)]],
       description: ['', Validators.required]
     })
+    this.formGroup.valueChanges.subscribe(() => this.isValid = false)
    }
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void {}
 
   saveData() {
     if (this.formGroup.valid) {

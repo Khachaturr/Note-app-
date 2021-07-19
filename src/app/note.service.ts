@@ -23,7 +23,7 @@ export class NoteService {
   saveNote(data) {
     let note: Note = {
       ...data,
-      data: Date.now(),
+      date: Date.now(),
       id: NaN
     }
 
@@ -52,6 +52,65 @@ export class NoteService {
 
     }
     return config[validatorName]
+  }
+
+  remuveNote(item, id) {
+    console.log(this.notesdata)
+    let index = this.notesdata.findIndex((data) => data.id === id);
+    item.date = this.notesdata[index].date;
+    item.id = this.notesdata[index].id
+    console.log(item)
+
+    this.changeDataServer(item).toPromise<Note>()
+    .then(data => {
+    this.notesdata[index].description = item.description
+    this.notesdata[index].title = item.title
+    this.sendsData(this.notesdata)
+    })
+    .catch(error => {
+      alert("Failed to save note")
+    })
+  }
+
+
+  changeDataServer(data: Note)  {
+    return this.http.put<Note>(`http://localhost:9000/api/notes/:${data.id}`, { ...data })
+  };
+
+
+  deleteNote(item) {
+
+    this.deleteNoteInServer(item.id).toPromise<Note>()
+    .then(data => {
+      let index = this.notesdata.findIndex((data) => data.id === item.id)
+      this.notesdata.splice(index, 1)
+      this.sendsData(this.notesdata)    
+    })
+    .catch(error => {
+      alert("Failed to delete note")
+    })
+
+   
+  }
+
+  deleteNoteInServer(id){
+    return this.http.delete<Note>(`http://localhost:9000/api/notes/:${id}`)
+  }
+
+  getNotes(){
+
+    this.getNotesFromServer().toPromise<any>()
+    .then(data => {
+      this.notesdata=[...data.notes]
+      this.sendsData(this.notesdata)    
+    })
+    .catch(error => {
+      alert("Failed to get notes")
+    })
+  }
+
+  getNotesFromServer(){
+    return this.http.get<any>(`http://localhost:9000/api/notes`)
   }
 
 }

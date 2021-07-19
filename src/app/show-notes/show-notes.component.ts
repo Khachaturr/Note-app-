@@ -11,19 +11,23 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
 
   dataNote: Note[];
 
-  formGroupforShowNote: FormGroup;
+  formGroup: FormGroup;
 
   isshow: number;
+
+  _errorMessage: string;
 
   
 
   constructor(private formBilder: FormBuilder, private noteService: NoteService) {
-    this.formGroupforShowNote = this.formBilder.group({
-      titleShowNotes: ['', [Validators.required, Validators.maxLength(255)]],
-      descriptionShowNotes: ['', Validators.required]
+    this.formGroup = this.formBilder.group({
+      title: ['', [Validators.required, Validators.maxLength(255)]],
+      description: ['', Validators.required]
     })
 
     this.noteService.send.subscribe(data => this.dataNote= [...data])
+    this.noteService.getNotes()
+    
    }
 
   ngOnInit(): void {
@@ -33,16 +37,41 @@ export class ShowNotesComponent implements OnInit, OnDestroy  {
      this.noteService.send.unsubscribe
   }
 
-  openEditsection(){
+  get errorMessage() {
 
-  };
+    if (this.formGroup.get('title').errors) {
+      for (let param in this.formGroup.get('title').errors) {
+        return NoteService.getValidatorErrorMessage(param)
+      }
+    }
+    else if (this.formGroup.get('description').errors) {
+      for (let param in this.formGroup.get('description').errors) {
+        return NoteService.getValidatorErrorMessage(param)
+      }
+    }
+  }
 
-  deleteNote() {
+  openEditsection(i, item:Note) {
+    if(item != undefined){
+      this.formGroup.get('title').patchValue(item.title)
+      this.formGroup.get('description').patchValue(item.description)
+      this.isshow = i
 
-  };
+    }else{
+      this.isshow = i
+    }
+  }
 
-  remuveNotes() {
+  deleteNote(item: Note){
+    this.noteService.deleteNote(item)
 
+  }
+
+  remuveNotes(item:Note){
+    if(this.formGroup.valid){
+      this.noteService.remuveNote(this.formGroup.value, item.id)
+      this.isshow= NaN
+    }
   }
 
 

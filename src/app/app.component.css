@@ -27,6 +27,7 @@
 
 .notes {
    width: 100% !important;
+   margin-top: 16px
 }
 
 @media only screen and (max-width: 600px) {
